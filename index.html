@@ -2064,63 +2064,82 @@
                     <script>
                         let cart = [];
 
-                        function addToCart(item) {
-                            cart.push(item);
-                            displayCart();
-                        }
+function addToCart(item) {
+    cart.push(item);
+    displayCart();
+}
 
-                        function displayCart() {
-                            const cartItems = document.getElementById('cartItems');
-                            cartItems.innerHTML = '';
+function displayCart() {
+    const cartItems = document.getElementById('cartItems');
+    cartItems.innerHTML = '';
 
-                            cart.forEach((item, index) => {
-                                const li = document.createElement('li');
-                                li.textContent = item;
+    cart.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.textContent = item;
 
-                                // Create delete button
-                                const deleteButton = document.createElement('button');
-                                deleteButton.textContent = 'Delete';
-                                deleteButton.style.marginLeft = '5px';
-                                deleteButton.style.fontSize = '7px';
-                                deleteButton.style.padding = '8px';
+        // Create edit button
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Edit';
+        editButton.style.marginLeft = '5px';
+        editButton.style.fontSize = '7px';
+        editButton.style.padding = '8px';
 
-                                deleteButton.onclick = function() {
-                                    removeFromCart(index);
-                                };
+        editButton.onclick = function() {
+            editCartItem(index);
+        };
 
-                                li.appendChild(deleteButton);
-                                cartItems.appendChild(li);
-                            });
-                        }
+        // Create delete button
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.style.marginLeft = '5px';
+        deleteButton.style.fontSize = '7px';
+        deleteButton.style.padding = '8px';
 
-                        function removeFromCart(index) {
-                            cart.splice(index, 1); // Remove the item at the given index
-                            displayCart(); // Update the cart display
-                        }
+        deleteButton.onclick = function() {
+            removeFromCart(index);
+        };
 
-                        function clearCart() {
-                            cart = [];
-                            displayCart();
-                            customMessage = [];
-                        }
-                        
+        li.appendChild(editButton);
+        li.appendChild(deleteButton);
+        cartItems.appendChild(li);
+    });
+}
 
-                        // Function to send cart items and custom message to WhatsApp
-                        document.getElementById('sendToWhatsApp').onclick = function() {
-                            if (cart.length === 0) {
-                                alert("Your cart is empty!");
-                                return;
-                            }
-                           
+function editCartItem(index) {
+    const newItem = prompt("Edit item:", cart[index]);
+    if (newItem !== null && newItem.trim() !== "") {
+        cart[index] = newItem.trim();
+        displayCart();
+    }
+}
 
-                            const customMessage = document.getElementById('customMessage').value;
-                            const cartMessage = "" + cart.join("\n");
-                            const message = customMessage ? customMessage + "\n\n" + cartMessage : cartMessage;
+function removeFromCart(index) {
+    cart.splice(index, 1); // Remove the item at the given index
+    displayCart(); // Update the cart display
+}
 
-                            const whatsappURL = `https://wa.me/?text=${encodeURIComponent(message)}`;
+function clearCart() {
+    cart = [];
+    displayCart();
+    document.getElementById('customMessage').value = ''; // Clear the input field
+}
 
-                            window.open(whatsappURL, '_blank');
-                        };
+// Function to send cart items and custom message to WhatsApp
+document.getElementById('sendToWhatsApp').onclick = function() {
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+
+    const customMessage = document.getElementById('customMessage').value;
+    const cartMessage = cart.join("\n");
+    const message = customMessage ? customMessage + "\n\n" + cartMessage : cartMessage;
+
+    const whatsappURL = `https://wa.me/?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappURL, '_blank');
+};
+
                     </script>
 
 </body>
