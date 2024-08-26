@@ -2114,7 +2114,7 @@
                            
 
                             const customMessage = document.getElementById('customMessage').value;
-                            const cartMessage = "\n\n" + cart.join("\n");
+                            const cartMessage = "" + cart.join("\n");
                             const message = customMessage ? customMessage + "\n\n" + cartMessage : cartMessage;
 
                             const whatsappURL = `https://wa.me/?text=${encodeURIComponent(message)}`;
