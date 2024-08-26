@@ -193,7 +193,7 @@
         @media only screen and (max-width: 600px) {
             
         .whatsapp-icon img{
-                width:30px;
+                width:43px;
                 margin-left: 10px;
             }
         }
@@ -1960,7 +1960,7 @@
                                                                 <h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown">5$</h3>
                                                                 <h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn"><a style="text-decoration: none;color: white;" id="toggleButton" onclick="addToCart('TARTE CITRON')">TARTE CITRON</a></h2>
                                                                 <h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown">5$</h3>
-                                                                <h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn"><a style="text-decoration: none;color: white;" id="toggleButton" onclick="addToCart('TARTE FRAISEAZA')">TARTE FRAISE</a></h2>
+                                                                <h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn"><a style="text-decoration: none;color: white;" id="toggleButton" onclick="addToCart('TARTE FRAISE')">TARTE FRAISE</a></h2>
                                                                 <h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown">5$</h3>
                                                                 <h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn"><a style="text-decoration: none;color: white;" id="toggleButton" onclick="addToCart('ÉCLAIR CLASSIC')">ÉCLAIR CLASSIC</a></h2>
                                                                 <h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown">5$</h3>
@@ -1968,7 +1968,7 @@
                                                                 <h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown">5$</h3>
                                                                 <h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn"><a style="text-decoration: none;color: white;" id="toggleButton" onclick="addToCart('SWISS ROLL VANILLA')">SWISS ROLL VANILLA</a></h2>
                                                                 <h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown">5$</h3>
-                                                                <h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn"><a style="text-decoration: none;color: white;" id="toggleButton" onclick="addToCart('TIRAMISU')">TIRAMISU</a></h2>
+                                                                <h2 style="font-size: 24px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:300;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceIn bounceIn" id="cart"><a style="text-decoration: none;color: white;" id="toggleButton" onclick="addToCart('TIRAMISU')" >TIRAMISU</a></h2>
                                                                 <h3 style="font-size: 16px;color: #ffffff;text-align: center;font-family:Open Sans Condensed;font-weight:700;font-style:normal" class="vc_custom_heading wpb_animate_when_almost_visible wpb_bounceInDown bounceInDown">8$</h3>
                                                                 <div class="vc_empty_space" style="height: 32px"><span class="vc_empty_space_inner"></span></div>
                                                             </div>
@@ -1993,7 +1993,7 @@
                         </div>
 
                         <div class="whatsapp-icon">
-                            <a  href="#cart"><a style="color: white; font-weight: 100px;border: 1px solid white;padding: 6px;" href="#cart">Cart</a></a>
+                            <a  href="#cart"><img src="1413908-removebg-preview.png" alt="cart" ></a>
                         </div>
                         <footer id="colophon" class="site-footer">
 
@@ -2101,7 +2101,9 @@
                         function clearCart() {
                             cart = [];
                             displayCart();
+                            customMessage = [];
                         }
+                        
 
                         // Function to send cart items and custom message to WhatsApp
                         document.getElementById('sendToWhatsApp').onclick = function() {
@@ -2109,6 +2111,7 @@
                                 alert("Your cart is empty!");
                                 return;
                             }
+                           
 
                             const customMessage = document.getElementById('customMessage').value;
                             const cartMessage = "\n\n" + cart.join("\n");
